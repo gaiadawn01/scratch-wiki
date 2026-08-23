@@ -19,6 +19,9 @@ BEFORE the compression happens.
 - **Stale entry threshold:** A page's `turn:` frontmatter hasn't been updated in ~5 turns.
 - **Per turn:** A turn is one completed user-prompt → agent-reply loop.
 - **On demand:** New model appears / benchmark kicks off / state shifts — don't wait for the counter.
+- **Every new run:** At session start for a benchmark/batch task, write the run stub
+  (`runs/run-N-<timestamp>.json` + `entities/run-N-detail.md`) BEFORE any tool call.
+  Fill fields per step. Never hold run numbers only in context.
 
 ## What a handoff is
 Not a batch, not a per-token counter, not per-turn. A handoff is a single
@@ -38,6 +41,45 @@ active state), reset context, then pick up from scratch.
   conversation.
 - Handoff is a ONE-LINE STATUS REPORT — not the raw conversation.
 - If lint fails, fix lint before handoff (or handoff goes stale).
+
+## Run stubs and next-action (run-3 lessons)
+
+Small quant models degrade tool-call generation per compression cycle.
+The scratch store survived correctly, but the model couldn't reconstruct
+clean tool calls from a summary. Two rules prevent this:
+
+1. **Write the run stub at session start.**
+   `runs/run-N-<timestamp>.json` with the model name, host, and
+   field keys (null values ok), committed BEFORE the first benchmark call.
+    - `entities/run-N-detail.md` created in the same commit.
+     Do not hold numbers in context only. If the context compresses,
+     the JSON on disk is the source of truth.
+
+2. **Entity page must carry a `Next action` line.**
+   The active entity page for a run includes the exact tool call to make
+   next — not "continue the benchmark," but:
+   ```
+   Next action: curl http://llm-01:11434/v1/chat/completions
+     model: RVN-IQ2_XXS-mtp_160:latest
+     stream: false
+     (exact body for step N+1)
+   ```
+   After compression, the prompt to the model is
+   "execute the Next action from entities/run-N-detail.md"
+   — not "continue from scratch."
+
+## Session budget
+
+- **Max 3 compression cycles per session.** After 3, open a fresh session
+  and read from scratch.
+- **Sign of degradation:** if tool calls start producing character-level
+  errors (typos in paths, missing pipes, duplicate JSON keys), stop the
+  current session and start fresh — the small quant model has hit its
+  reliable-generation limit. Do not push through it.
+- **Re-verify model is loaded** (`http://llm-01:11434/api/tags` — note:
+  this Ollama build has NO `/api/models`, only `/api/tags` and `/v1/models`).
+  A model name mismatch (`XXSS` vs `XXS`) is the first
+  indicator the model is confabulating.
 
 ## Verification
 After every handoff:
