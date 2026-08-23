@@ -11,4 +11,9 @@
 - Local: /Users/zabirkhan/.hermes/scratch
 - Remote: github.com/gaiadawn01/scratch-wiki
 - First turn: 0 (fresh handoff protocol active)
-- No entities registered yet (seeded with zero entries — first page created on demand)
+- Entities seeded: [[scratch-project]] (turn counter + phase tracker)
+
+## [2026-08-23 00:05] create | Concept page: handoff-protocol
+- Registered concepts/handoff-protocol.md
+- Turn counter, handoff triggers, one-pass steps, verify rules
+- Updated index.md to list it

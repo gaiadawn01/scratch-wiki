@@ -9,7 +9,8 @@
 - [[scratch-project]] — scratch itself: phases, turn counter, status snapshots
 
 ## Concepts
-<!-- One page per concept. Example: [[prompt-perf-protocol]] -->
+<!-- One page per concept. -->
+- [[handoff-protocol]] — the handoff mechanic: triggers, one-pass steps, verify rules
 
 ## Comparisons
 <!-- Side-by-side analyses -->
