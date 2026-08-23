@@ -1,0 +1,21 @@
+{
+  "run": 3,
+  "timestamp": "2026-08-23T14:24:25Z",
+  "is_baseline": false,
+  "model": "RVN-IQ2_XXSS-mtp_160:latest",
+  "host": "llm-01 (RTX 5080 16GB, Ollama 11434)",
+  "status": "warmup_failed",
+  "notes": "Warm-up request failed — model was not loaded on the host at run-3 start (host state changed between run-2 and run-3). No timed prompts were run; all timing fields are null by design, not by loss of detail. This JSON corrected from an earlier corrupted duplicate (duplicate status keys, all-null results labeled success) and committed after the closure commit.",
+  "results": [
+    {
+      "prompt_index": 0,
+      "prompt": "warm-up",
+      "status": "warmup_failed",
+      "error": "warm-up request failed (model not loaded on host at run-3 start)",
+      "tokens": null,
+      "total_s": null,
+      "first_token_s": null,
+      "tok_s": null
+    }
+  ]
+}

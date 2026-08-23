@@ -53,3 +53,10 @@
 - Result: warm-up failed (model not loaded — host state changed since run-2)
 - Run JSON: runs/run-1-2026-08-23T14:24:25Z.json (run-1 on run-3 host)
 - NOTE: authentic finding — host state changed between run-2 and run-3, preserved via handoff detail
+## [2026-08-23 14:35] handoff | detail preservation verified (run-2)
+- Run-2 numbers survived compression handoff: 145/96/116 tok intact in entities/run-2-detail.md AND runs/run-2-2026-08-23T00:34:23Z.json
+- Handoff #3 complete — stress test closed (issue #1 closed on GitHub)
+## [2026-08-23 17:40] correction | run-3 JSON published after closure
+- Original run-3 JSON was untracked and corrupted (duplicate status keys, model typo XXSS, nulls labeled success); log above also pointed at non-existent runs/run-1-2026-08-23T14:24:25Z.json
+- Published corrected runs/run-3-2026-08-23T14:24:25Z.json with top-level status: warmup_failed, honest nulls, and corruption note
+- Added entities/run-3-detail.md (linked in index.md) so a new session has clean, correct facts to troubleshoot from
