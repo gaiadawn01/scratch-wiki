@@ -47,3 +47,9 @@
 - Index: run-2-detail added, orphan resolved
 - Lint: 128/20/43/35/40 lines (under 200), no orphan, no stale entries
 - Resume point verified (runs/run-2 JSON, entities/run-2-detail.md, index.md all intact)
+## [2026-08-23 14:24] handoff | run-3 detail (warm-up failed on host)
+- Run-3: RVN-IQ2_XXSS-mtp_160:latest (loaded per run-2)
+- Host: llm-01 @ 08-23T14:24 UTC (same GPU, same Ollama 11434)
+- Result: warm-up failed (model not loaded — host state changed since run-2)
+- Run JSON: runs/run-1-2026-08-23T14:24:25Z.json (run-1 on run-3 host)
+- NOTE: authentic finding — host state changed between run-2 and run-3, preserved via handoff detail
