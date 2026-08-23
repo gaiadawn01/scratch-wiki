@@ -2,7 +2,7 @@
 title: Scratch Project Tracking Page
 created: 2026-08-22
 updated: 2026-08-22
-turn: 0
+turn: 2
 type: entity
 tags: [scratch, project, tracking]
 stale: false
@@ -29,7 +29,7 @@ the raw conversation.
 | 6 | Handoff stress-test | pending | 3 handoffs in one session; verify |
 
 ## Turn counter
-turn: 0 (last handoff reset at turn 0)
+turn: 2 (last handoff reset at turn 0)
 
 ## Status snapshots
 - [2026-08-22 23:10] initialized; git remote set up (github.com/gaiadawn01/scratch-wiki)

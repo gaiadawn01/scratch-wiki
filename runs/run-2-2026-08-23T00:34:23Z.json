@@ -1,0 +1,41 @@
+{
+  "run": 2,
+  "timestamp": "2026-08-23T00:34:23Z",
+  "is_baseline": false,
+  "model": "RVN-IQ2_XXS-mtp_160:latest",
+  "host": "llm-01 (RTX 5080 16GB, Ollama 11434)",
+  "prompts": [
+    "What is the third largest US state by area? Reply with just the state name.",
+    "Compute 15*15*15*15*15*15*15. Reply only with the number.",
+    "Explain what a KV cache is in one sentence."
+  ],
+  "results": [
+    {
+      "prompt_index": 0,
+      "prompt": "state",
+      "tokens": 145,
+      "total_s": 5.193,
+      "first_token_s": null,
+      "tok_s": 27.92,
+      "status": "success"
+    },
+    {
+      "prompt_index": 1,
+      "prompt": "math",
+      "tokens": 96,
+      "total_s": 8.069,
+      "first_token_s": null,
+      "tok_s": 11.897,
+      "status": "success"
+    },
+    {
+      "prompt_index": 2,
+      "prompt": "kv-explain",
+      "tokens": 116,
+      "total_s": 3.036,
+      "first_token_s": null,
+      "tok_s": 38.21,
+      "status": "success"
+    }
+  ]
+}
